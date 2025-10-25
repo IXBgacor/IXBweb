@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IX B Gacor</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --biru-laut: #0077b6;
+            --kuning-cerah: #ffc300;
+            --putih-gading: #f7f7f7;
+            --teks-gelap: #2a2a2a;
+            --background-body: #e0f7fa;
+            --shadow-ring: 0 0 0 3px rgba(255, 195, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-body);
+            color: var(--teks-gelap);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: var(--biru-laut);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-family: 'Pacifico', cursive; 
+            font-size: 1.8em;
+        }
+
+        .menu-toggle {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: white;
+            display: none;
+        }
+
+        nav {
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+            
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+
+        nav.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        nav a {
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--teks-gelap);
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+        
+        nav a i {
+            margin-right: 8px;
+            color: var(--biru-laut);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--kuning-cerah);
+            color: var(--biru-laut);
+        }
+        
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            nav {
+                position: static;
+                display: flex !important;
+                flex-direction: row;
+                box-shadow: none;
+                background-color: transparent;
+                width: auto;
+                border-radius: 0;
+                overflow: visible;
+                gap: 10px;
+                
+                transform: none; 
+                opacity: 1; 
+            }
+            
+            nav a {
+                color: white;
+                border-bottom: none;
+                padding: 5px 10px;
+                font-weight: 500;
+            }
+            
+            nav a i {
+                color: white;
+            }
+
+            nav a:hover, nav a.active {
+                background-color: var(--kuning-cerah);
+                color: var(--biru-laut);
+            }
+            nav a.active i {
+                color: var(--biru-laut);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            nav.open {
+                right: 15px;
+            }
+        }
+
+        main {
+            padding: 20px;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            min-height: 70vh;
+        }
+
+        h2 {
+            color: var(--biru-laut);
+            border-bottom: 2px solid var(--kuning-cerah);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animated-item {
+            opacity: 0;
+            animation: fadeIn 0.4s forwards;
+        }
+
+        .hero-section {
+            background-color: var(--biru-laut);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .hero-content h2 {
+            color: var(--kuning-cerah);
+            font-family: 'Pacifico', cursive; 
+            font-size: 3em;
+            border-bottom: none;
+        }
+        
+        .btn-kuning {
+            display: inline-block;
+            background-color: var(--kuning-cerah);
+            color: var(--biru-laut);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: all 0.2s;
+        }
+
+        .btn-kuning:hover {
+            background-color: #ffda6a;
+            box-shadow: var(--shadow-ring);
+        }
+        
+        .anggota-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .anggota-card {
+            background-color: var(--putih-gading);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .anggota-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .wali-card {
+            background: linear-gradient(135deg, var(--biru-laut), #005691) !important;
+            color: white;
+            border: 1px solid var(--kuning-cerah) !important;
+        }
+        .wali-card:hover {
+             transform: translateY(-5px) scale(1.02);
+             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), var(--shadow-ring);
+        }
+        
+        .tabel-jadwal {
+            width: 100%;
+            border-collapse: separate; 
+            border-spacing: 0 8px;
+            margin-top: 15px;
+        }
+
+        .tabel-jadwal th, .tabel-jadwal td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .tabel-jadwal th {
+            background-color: var(--biru-laut);
+            color: white;
+            font-weight: 700;
+            border-top: none;
+        }
+
+        .tabel-jadwal td {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+        }
+        .tabel-jadwal tr:nth-child(even) td {
+            background-color: var(--putih-gading);
+        }
+        
+        .galeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+        }
+
+        .galeri-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .galeri-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .galeri-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .galeri-item img:hover {
+            opacity: 0.9;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 119, 182, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 119, 182, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 119, 182, 0); }
+        }
+
+        .music-player {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            z-index: 100;
+        }
+        
+        .music-player button {
+            background-color: var(--biru-laut);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.2s;
+        }
+        
+        .music-player.playing button {
+            animation: pulse 1.5s infinite;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="music-player" id="music-player-gui">
+        <audio id="bg-music" loop>
+            <source src="videoplayback.mp3" type="audio/mpeg">
+            Musik tidak didukung di browser Anda.
+        </audio>
+        <button id="music-toggle"><i class="fas fa-play"></i></button>
+    </div>
+
+    <header>
+        <div class="logo">
+            <h1>IX B Gacor</h1>
+        </div>
+        
+        <div class="menu-toggle" onclick="toggleNav()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav id="main-nav">
+            <a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Utama</a>
+            <a href="#" data-page="anggota"><i class="fas fa-users"></i> Anggota</a>
+            <a href="#" data-page="deskripsi"><i class="fas fa-clipboard-list"></i> Deskripsi</a>
+            <a href="#" data-page="jadwal-pelajaran"><i class="fas fa-book-open"></i> Pelajaran</a>
+            <a href="#" data-page="jadwal-piket"><i class="fas fa-broom"></i> Piket</a>
+            <a href="#" data-page="galeri"><i class="fas fa-camera-retro"></i> Galeri</a>
+            <a href="https://www.instagram.com/ixbspensamar___?igsh=cmpodGdhaTg3NWgy"><i class="fab fa-instagram"></i> Instagram</a>
+        </nav>
+    </header>
+
+    <main id="content">
+        
+    </main>
+    
+    <script>
+        const WALI_KELAS = { nama: "Ibu Sri mahriana S.PD", jabatan: "Wali Kelas" };
+        const ANGGOTA_KELAS = [
+            { nama: "Aldika Fratama Ramadhansyah", jabatan: "Ketua Kelas" }, { nama: "Sya'ba Seffana", jabatan: "Wakil Ketua" }, 
+            { nama: "Zahira Olivia", jabatan: "Sekretaris I" }, { nama: "M.Arya Fadillah", jabatan: "Sekertaeis 2" }, 
+            { nama: "ida", jabatan: "Bendahara 1" }, { nama: "M.Dzaki Akrom", jabatan: "bendahara 2" }, 
+            { nama: "Febian Fazri", jabatan: "Keamanan" }, { nama: "Joan Kalelo", jabatan: "Keamanan" }, 
+            { nama: "Zaidan Nurrahman", jabatan: "Keamanan" }, { nama: "M.Aditiya Ramadhan", jabatan: "Keamanan" }, 
+            { nama: "Susan Rizky Oktaviani", jabatan: "Kebersihan" }, { nama: "Azzelia Noor Fatma", jabatan: "Kebersihan" }, 
+            { nama: "Nabila Putri", jabatan: "Kebersihan" }, { nama: "Agnia Noor Hafsari", jabatan: "Keindahan" }, 
+            { nama: "Halifatul Rahmadania", jabatan: "Keindahan" }, { nama: "Noor Annisa Wati", jabatan: "Keindahan" }, 
+            { nama: "Hafizah", jabatan: "Keindahan" }, { nama: "M.Hafiz Anshari", jabatan: "Kekeluargaan" }, 
+            { nama: "M.Adly Taufan", jabatan: "Kekeluargaan" }, { nama: "M.Nizar Hanief", jabatan: "Kekeluargaan" }, 
+            { nama: "Mulya Akbar", jabatan: "Kekeluargaan" }, { nama: "Ahmad Ridha", jabatan: "keagamaan" }, 
+            { nama: "Ananda Zidan Azzamy", jabatan: "keagamaan" }, { nama: "M.Syaiful Rahman", jabatan: "keagamaan" }, 
+            { nama: "M.Ilham", jabatan: "keagamaan" },
+        ];
+        
+        const JADWAL_PELAJARAN = [
+            ["Senin", "IPA, PAI"], ["Senin", "BK, B. Indonesia"],
+            ["Selasa", "Prakarya, Pkn"], ["Selasa", "B. Inggris"],
+            ["Rabu", "B.inggris, IPS"], ["Rabu", "IPA, B.Indonesia"],
+            ["Kamis", "B.Indonesia, Matematika"], ["Kamis", "IPS, PAI"],
+            ["Jumat", "PJOK"], ["Jumat", "Informatika"],
+            ["Sabtu", "Matematika, PJOK"], ["Sabtu", "Informatika, PQ"],
+        ];
+
+        const JADWAL_PIKET = [
+            ["Senin", "Ida-Joan-Zidan-Adly-sya'ba"], ["Selasa", "Susan-Nabila-Arya-Akbar"],
+            ["Rabu", "Agnia-Zahira-Febian-Syaiful "], ["Kamis", "Hafizah-halifa-Hanif-Aldika"],
+            ["Jumat", "Annisa-Azzel-Akrom-hafiz"], ["Sabtu", "Zaidan-Adit-Ridha-Ilham"],
+        ];
+        
+        function toggleNav() {
+            document.getElementById('main-nav').classList.toggle('open');
+            const icon = document.querySelector('.menu-toggle i');
+            if (document.getElementById('main-nav').classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        function changePage(pageId) {
+            const contentDiv = document.getElementById('content');
+            let contentHTML = '';
+            
+            document.getElementById('main-nav').classList.remove('open'); 
+            document.querySelector('.menu-toggle i').classList.remove('fa-times');
+            document.querySelector('.menu-toggle i').classList.add('fa-bars');
+            
+            document.querySelectorAll('#main-nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            const createAnimatedItem = (html, delay) => `<div class="animated-item" style="animation-delay: ${delay}s;">${html}</div>`;
+
+            switch(pageId) {
+                case 'home':
+                    contentHTML = `
+                        ${createAnimatedItem(`
+                            <div class="hero-section">
+                                <div class="hero-content">
+                                    <h2>Kelas IX B</h2>
+                                    <p><strong>SMPN 1 MARABAHAN!</strong></p>
+                                    <p>IX B,LUAR BIASA!</p>
+                                    <a href="#" data-page="deskripsi" class="btn-kuning" onclick="changePage('deskripsi'); return false;"><i class="fas fa-angle-right"></i> Kenali Kami Lebih Jauh</a>
+                                </div>
+                            </div>
+                        `, 0.1)}
+                        <div style="text-align: center; padding: 15px;">
+                            ${createAnimatedItem(`<h3 style="color: var(--biru-laut); margin-bottom: 15px;">Akses Cepat</h3>`, 0.4)}
+                            ${createAnimatedItem(`<a href="#" data-page="anggota" class="btn-kuning" onclick="changePage('anggota'); return false;">Anggota Kelas <i class="fas fa-users"></i></a>`, 0.6)}
+                            ${createAnimatedItem(`<a href="#" data-page="jadwal-pelajaran" class="btn-kuning" onclick="changePage('jadwal-pelajaran'); return false;">Jadwal Belajar <i class="fas fa-book"></i></a>`, 0.7)}
+                            ${createAnimatedItem(`<a href="#" data-page="galeri" class="btn-kuning" onclick="changePage('galeri'); return false;">Galeri Momen <i class="fas fa-image"></i></a>`, 0.8)}
+                        </div>
+                    `;
+                    break;
+                case 'anggota':
+                    let anggotaHTML = `
+                        <div class="anggota-card wali-card animated-item" style="animation-delay: 0.2s;">
+                            <strong>${WALI_KELAS.nama}</strong>
+                            <em>${WALI_KELAS.jabatan}</em>
+                        </div>
+                    `;
+                    anggotaHTML += ANGGOTA_KELAS.map((siswa, i) => `
+                        <div class="anggota-card animated-item" style="animation-delay: ${0.3 + i * 0.05}s;">
+                            <strong>${siswa.nama}</strong>
+                            <em>${siswa.jabatan}</em>
+                        </div>
+                    `).join('');
+
+                    contentHTML = `
+                        ${createAnimatedItem(`<h2>Anggota (${ANGGOTA_KELAS.length + 1} Jiwa)</h2>`, 0.1)}
+                        <div class="anggota-grid">
+                            ${anggotaHTML}
+                        </div>
+                    `;
+                    break;
+                case 'deskripsi':
+                    contentHTML = `
+                        ${createAnimatedItem(`<h2>📝 Deskripsi Kelas Kami</h2>`, 0.1)}
+                        ${createAnimatedItem(`<p>Kelas IX B dikenal sebagai kelas yang penuh kebersamaan dan semangat tinggi. Setiap anggota saling mendukung, baik dalam pelajaran maupun kegiatan sekolah. Kami bukan hanya teman sekelas, tapi juga keluarga yang selalu siap bekerja sama, tertawa bersama, dan maju bersama. Dengan semangat solidaritas dan rasa saling menghargai, IX B siap menorehkan prestasi dan kenangan terbaik di tahun terakhir SMP!.</p>`, 0.2)}
+                        ${createAnimatedItem(`<h3>Yel Yel kami:</h3>`, 0.3)}
+                        ${createAnimatedItem(`<ul>
+                            <li><strong>1 :</strong> Kami dari 9B beraksi
+Beraksi beraksi
+Kami anak berprestasi
+prestasi
+9B Asik sekali.</li>
+                            <li><strong>2:</strong> DIKASIH APA?
+Dikasih W Kasih O Kasih W
+WOW KEREN
+WOW WOW KEREN
+WOW KEREN
+WOW WOW KEREN.</li>
+                            <li><strong>3 Akhir:</strong> 9B? 
+Solidaritas, Tanpa batas, Tetap kompak, sampai tuntas</li>
+                        </ul>`, 0.4)}
+                        ${createAnimatedItem(`<p style="font-style: italic; color: var(--biru-laut);">"Sehat selalu semua.."</p>`, 0.5)}
+                    `;
+                    break;
+                case 'jadwal-pelajaran':
+                    contentHTML = `
+                        ${createAnimatedItem(`<h2>📚 Jadwal Pelajaran Kelas 9B</h2>`, 0.1)}
+                        <table class="tabel-jadwal">
+                            ${createAnimatedItem(`
+                                <thead>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <th>Mata Pelajaran</th>
+                                    </tr>
+                                </thead>
+                            `, 0.2)}
+                            <tbody>
+                                ${JADWAL_PELAJARAN.map((jp, i) => `
+                                    <tr class="animated-item" style="animation-delay: ${0.3 + i * 0.05}s;">
+                                        <td>${jp[0]}</td>
+                                        <td>${jp[1]}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                case 'jadwal-piket':
+                    contentHTML = `
+                        ${createAnimatedItem(`<h2>🧹 Jadwal Piket Kebersihan</h2>`, 0.1)}
+                        ${createAnimatedItem(`<p>Kebersihan adalah sebagian dari iman. Mari jaga kebersihan kelas kita!</p>`, 0.2)}
+                        <table class="tabel-jadwal">
+                            ${createAnimatedItem(`
+                                <thead>
+                                    <tr>
+                                        <th>Hari</th>
+                                        <th>Anggota Piket</th>
+                                    </tr>
+                                </thead>
+                            `, 0.3)}
+                            <tbody>
+                                ${JADWAL_PIKET.map((jp, i) => `
+                                    <tr class="animated-item" style="animation-delay: ${0.4 + i * 0.05}s;">
+                                        <td><strong>${jp[0]}</strong></td>
+                                        <td>${jp[1]}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                case 'galeri':
+                    contentHTML = `
+                        ${createAnimatedItem(`<h2>📸 Galeri Foto Momen Terbaik Kami</h2>`, 0.1)}
+                        ${createAnimatedItem(`<p>Sepuluh potret kenangan indah kami selama di sekolah ini.</p>`, 0.2)}
+                        
+                        <div class="galeri-grid">
+                            <div class="galeri-item animated-item" style="animation-delay: 0.3s;">
+                                <img src="IMG-20230808-WA0012.jpg" alt="Foto Kelas 1" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+1'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.35s;">
+                                <img src="IMG-20230815-WA0055.jpg" alt="Foto Kelas 2" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+2'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.4s;">
+                                <img src="IMG-20231121-WA0011.jpg" alt="Foto Kelas 3" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+3'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.45s;">
+                                <img src="IMG-20231211-WA0008.jpg" alt="Foto Kelas 4" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+4'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.5s;">
+                                <img src="IMG-20251024-WA0008.jpg" alt="Foto Kelas 5" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+5'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.55s;">
+                                <img src="IMG-20251024-WA0040.jpg" alt="Foto Kelas 6" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+6'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.6s;">
+                                <img src="IMG_20240123_151352.jpg" alt="Foto Kelas 7" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+7'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.65s;">
+                                <img src="IMG_20240629_145246.jpg" alt="Foto Kelas 8" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+8'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.7s;">
+                                <img src="IMG_20240717_224430.jpg" alt="Foto Kelas 9" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+9'">
+                            </div>
+                            <div class="galeri-item animated-item" style="animation-delay: 0.75s;">
+                                <img src="IMG_20241126_142614.jpg" alt="Foto Kelas 10" onerror="this.onerror=null;this.src='https://via.placeholder.com/150x150?text=Foto+10'">
+                            </div>
+                        </div>
+                        
+                        ${createAnimatedItem(`
+                            <div style="text-align: center; margin-top: 20px; padding: 15px; border: 1px dashed var(--kuning-cerah); border-radius: 5px;">
+                                <p>foto dan yang lebih lengkap ada di Google drive dibawah ya!</p>
+                                <a href="https://drive.google.com/drive/folders/1RsJvROLAY_8hgJr1cMIxdYBdOCCYvUzD" target="_blank" class="btn-kuning"><i class="fas fa-cloud"></i> Akses Google Drive Lengkap</a>
+                            </div>
+                        `, 0.8)}
+                    `;
+                    break;
+            }
+            
+            contentDiv.innerHTML = contentHTML;
+        }
+        
+        const music = document.getElementById('bg-music');
+        const musicToggleBtn = document.getElementById('music-toggle');
+        const musicPlayerGUI = document.getElementById('music-player-gui');
+        let isPlaying = false;
+
+        musicToggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicToggleBtn.innerHTML = '<i class="fas fa-play"></i>';
+                musicPlayerGUI.classList.remove('playing');
+            } else {
+                music.play().catch(error => {
+                    console.error("Autoplay gagal:", error);
+                    alert("Browser memblokir Autoplay. Silakan Play setelah interaksi.");
+                });
+                musicToggleBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                musicPlayerGUI.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        document.querySelectorAll('#main-nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const page = e.target.closest('a').getAttribute('data-page');
+                if (page) {
+                    e.preventDefault();
+                    changePage(page);
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            changePage('home');
+        });
+    </script>
+</body>
+</html>
